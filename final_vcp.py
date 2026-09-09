@@ -135,7 +135,7 @@ class VCPScanner:
     Unchanged from before.
     """
 
-    def __init__(self, min_price=100, min_volume=150000):
+    def __init__(self, min_price=100, min_volume=1000):
         self.min_price = min_price
         self.min_volume = min_volume
         self.fetcher = NSEStockFetcher()
@@ -193,7 +193,7 @@ class HistoricalVCPScanner:
                  breakout_threshold=0.07,
                  stop_loss_threshold=0.05,
                  min_price=100,
-                 min_volume=150000):
+                 min_volume=1000):
         """
         window_size:        number of bars fed to VCPAnalyzer.analyze() at each step
                              (same as the 150d window used in the original snapshot scan)
