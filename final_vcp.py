@@ -354,4 +354,4 @@ if __name__ == "__main__":
     )
 
     df = hist_scanner.scan()
-    print(df)
+    # print(df)

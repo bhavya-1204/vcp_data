@@ -26,14 +26,15 @@ jobs:
 
       - name: Run Final VCP Analysis
         run: |
-          python final_vcp.py
+          # python final_vcp.py
+          python test.py
 
       - name: Upload VCP Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: vcp-results
-          path: vcp_results.csv
+          name: vcp-results-1
+          path: vcp_results_1.csv
           retention-days: 30
 
       - name: Commit and push VCP Results
@@ -41,7 +42,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          git add vcp_results.csv
+          git add vcp_results_1.csv
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
