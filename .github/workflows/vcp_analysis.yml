@@ -26,7 +26,6 @@ jobs:
 
       - name: Run Final VCP Analysis
         run: |
-          # python final_vcp.py
           python test.py
 
       - name: Upload VCP Results
