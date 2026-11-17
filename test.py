@@ -135,7 +135,7 @@ def index():
   for ticker in nse_stock:
     # data = yf.download(ticker, period='150d', interval='1d', progress=False).round(2)
     for i in range(1, 16):
-
+      
       data = yf.download(ticker, start=f'2025-11-{i}', end=f'2026-11-{i}', interval='1d', progress=False).round(2)
       # print(data)
       
@@ -149,7 +149,11 @@ def index():
               'End date' : end_date,
               'Price' : data['Close'].iloc[-1].item()
           })
-  return pd.DataFrame(result)
+  df = pd.DataFrame(result)
+  if not df.empty:
+    df = df.sort_values('End date').groupby(['Stock name', 'Start date'], as_index=False).last()
+    df.to_csv('vcp_results_1.csv', index=False)
+  return df
 
 if __name__ == "__main__":
   stock = index()
