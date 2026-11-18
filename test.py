@@ -152,7 +152,7 @@ def index():
   df = pd.DataFrame(result)
   if not df.empty:
     df = df.sort_values('End date').groupby(['Stock name', 'Start date'], as_index=False).last()
-    df.to_csv('vcp_results_1.csv', index=False)
+    df.to_csv('vcp_results_1.csv', mode="a", header=False)
   return df
 
 if __name__ == "__main__":
